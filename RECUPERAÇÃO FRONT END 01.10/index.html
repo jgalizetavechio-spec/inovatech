@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Inova Tech | Tecnologia que transforma</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #050816;
+            color: white;
+        }
+
+        /* ================= MENU ================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 22px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(5, 8, 22, 0.65);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: #00c6ff;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        nav a {
+            color: #ddd;
+            text-decoration: none;
+            font-size: 15px;
+            transition: .3s;
+        }
+
+        nav a:hover {
+            color: #00c6ff;
+        }
+
+        .menu-button {
+            padding: 12px 22px;
+            border-radius: 30px;
+            background: linear-gradient(90deg, #0066ff, #00c6ff);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        .menu-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(0,198,255,.5);
+        }
+
+        /* ================= INÍCIO ================= */
+
+        #inicio {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 7% 70px;
+
+            background:
+                linear-gradient(90deg, rgba(5,8,22,.95), rgba(5,8,22,.55)),
+                url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2000&q=90");
+
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #inicio::before {
+            content: "";
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background: #0066ff;
+            filter: blur(180px);
+            opacity: .25;
+            right: 5%;
+            top: 20%;
+        }
+
+        .hero {
+            max-width: 750px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 8px 16px;
+            border: 1px solid rgba(0,198,255,.4);
+            border-radius: 30px;
+            color: #00c6ff;
+            background: rgba(0,198,255,.07);
+            margin-bottom: 25px;
+            font-size: 13px;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 7vw, 85px);
+            line-height: 1;
+            letter-spacing: -4px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, #0066ff, #00e5ff);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            color: #b9c0d0;
+            font-size: 18px;
+            line-height: 1.7;
+            max-width: 650px;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .primary {
+            background: linear-gradient(90deg, #0066ff, #00c6ff);
+            padding: 15px 28px;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            transition: .3s;
+        }
+
+        .primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 35px rgba(0,150,255,.35);
+        }
+
+        .secondary {
+            padding: 15px 28px;
+            border: 1px solid #30384d;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            transition: .3s;
+        }
+
+        .secondary:hover {
+            border-color: #00c6ff;
+            color: #00c6ff;
+        }
+
+        /* ================= GERAL ================= */
+
+        section {
+            padding: 110px 7%;
+        }
+
+        .section-title {
+            max-width: 700px;
+            margin-bottom: 60px;
+        }
+
+        .section-title small {
+            color: #00c6ff;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .section-title h2 {
+            font-size: 45px;
+            margin: 12px 0;
+        }
+
+        .section-title p {
+            color: #9ca5b8;
+            line-height: 1.7;
+        }
+
+        /* ================= SOBRE ================= */
+
+        #sobre {
+            background: #080c1c;
+        }
+
+        .sobre-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .sobre-text p {
+            color: #aeb6c8;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .card {
+            padding: 30px;
+            background: rgba(255,255,255,.04);
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 16px;
+            transition: .4s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #00c6ff;
+            box-shadow: 0 15px 40px rgba(0,150,255,.12);
+        }
+
+        .card .icon {
+            font-size: 30px;
+            margin-bottom: 18px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #8992a6;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* ================= NÚMEROS ================= */
+
+        .numbers {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 20px;
+            padding: 70px 7%;
+            background: linear-gradient(90deg,#0066ff,#00aeea);
+        }
+
+        .number {
+            text-align: center;
+        }
+
+        .number h3 {
+            font-size: 42px;
+        }
+
+        .number p {
+            margin-top: 8px;
+            opacity: .85;
+        }
+
+        /* ================= TECNOLOGIAS ================= */
+
+        #tecnologias {
+            background: #050816;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
+        }
+
+        .tech {
+            padding: 30px;
+            border-radius: 15px;
+            background: linear-gradient(145deg,#0c1228,#080c1b);
+            border: 1px solid #171e35;
+            transition: .3s;
+        }
+
+        .tech:hover {
+            transform: translateY(-7px);
+            border-color: #0066ff;
+        }
+
+        .tech h3 {
+            margin-bottom: 12px;
+        }
+
+        .tech p {
+            color: #929bad;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* ================= LOCALIZAÇÃO ================= */
+
+        #localizacao {
+            background: #080c1c;
+        }
+
+        .location {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .location-info,
+        .map {
+            min-height: 350px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,.08);
+            background: rgba(255,255,255,.03);
+        }
+
+        .location-info {
+            padding: 40px;
+        }
+
+        .location-info h3 {
+            font-size: 28px;
+            margin-bottom: 25px;
+        }
+
+        .location-info p {
+            color: #9ca5b8;
+            margin: 18px 0;
+        }
+
+        .map {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background:
+                linear-gradient(rgba(0,102,255,.15),rgba(0,198,255,.05)),
+                url("https://images.unsplash.com/photo-1524666041070-9b8767495eab?auto=format&fit=crop&w=1000&q=80");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .map span {
+            padding: 18px 25px;
+            background: rgba(0,0,0,.75);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            padding: 35px 7%;
+            background: #03050e;
+            border-top: 1px solid rgba(255,255,255,.08);
+            display: flex;
+            justify-content: space-between;
+            color: #737c90;
+        }
+
+        /* ================= RESPONSIVO ================= */
+
+        @media(max-width: 800px) {
+
+            header {
+                padding: 20px;
+            }
+
+            nav ul {
+                gap: 12px;
+            }
+
+            .menu-button {
+                display: none;
+            }
+
+            #inicio {
+                padding: 130px 25px 70px;
+            }
+
+            .hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .sobre-container,
+            .location {
+                grid-template-columns: 1fr;
+            }
+
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .numbers {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- MENU -->
+    <header>
+
+        <div class="logo">
+            Inova<span>Tech</span>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre">Sobre Nós</a></li>
+                <li><a href="#tecnologias">Tecnologias</a></li>
+                <li><a href="#localizacao">Localização</a></li>
+            </ul>
+        </nav>
+
+        <a href="#localizacao" class="menu-button">
+            Fale Conosco
+        </a>
+
+    </header>
+
+
+    <!-- INÍCIO -->
+    <section id="inicio">
+
+        <div class="hero">
+
+            <div class="tag">
+                🚀 TECNOLOGIA • INOVAÇÃO • FUTURO
+            </div>
+
+            <h1>
+                Transformamos ideias em
+                <span>tecnologia.</span>
+            </h1>
+
+            <p>
+                A Inova Tech desenvolve soluções digitais modernas,
+                inteligentes e eficientes para empresas que querem
+                evoluir e se destacar no mundo digital.
+            </p>
+
+            <div class="buttons">
+                <a href="#sobre" class="primary">
+                    Conheça a Inova Tech →
+                </a>
+
+                <a href="#localizacao" class="secondary">
+                    Nossa localização
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SOBRE -->
+    <section id="sobre">
+
+        <div class="section-title">
+            <small>SOBRE A EMPRESA</small>
+
+            <h2>
+                Tecnologia pensada para o futuro.
+            </h2>
+
+            <p>
+                Conheça um pouco mais sobre a Inova Tech e nossa forma
+                de transformar desafios em soluções.
+            </p>
+        </div>
+
+        <div class="sobre-container">
+
+            <div class="sobre-text">
+
+                <p>
+                    A Inova Tech é uma empresa especializada em
+                    tecnologia e soluções digitais.
+                </p>
+
+                <p>
+                    Trabalhamos para criar experiências digitais
+                    modernas, combinando criatividade, tecnologia
+                    e inovação.
+                </p>
+
+                <p>
+                    Nosso objetivo é ajudar empresas a utilizarem
+                    a tecnologia de forma simples, estratégica e
+                    eficiente.
+                </p>
+
+            </div>
+
+            <div class="cards">
+
+                <div class="card">
+                    <div class="icon">💡</div>
+                    <h3>Inovação</h3>
+                    <p>
+                        Novas ideias para resolver problemas
+                        e criar novas possibilidades.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="icon">⚡</div>
+                    <h3>Agilidade</h3>
+                    <p>
+                        Soluções rápidas, modernas e preparadas
+                        para acompanhar o mercado.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="icon">🔐</div>
+                    <h3>Segurança</h3>
+                    <p>
+                        Tecnologia desenvolvida pensando na
+                        proteção e confiabilidade dos dados.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="icon">🎯</div>
+                    <h3>Resultados</h3>
+                    <p>
+                        Estratégias digitais focadas em resultados
+                        e crescimento.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- NÚMEROS -->
+    <div class="numbers">
+
+        <div class="number">
+            <h3>+50</h3>
+            <p>Projetos realizados</p>
+        </div>
+
+        <div class="number">
+            <h3>+30</h3>
+            <p>Clientes</p>
+        </div>
+
+        <div class="number">
+            <h3>98%</h3>
+            <p>Satisfação</p>
+        </div>
+
+        <div class="number">
+            <h3>24h</h3>
+            <p>Suporte</p>
+        </div>
+
+    </div>
+
+
+    <!-- TECNOLOGIAS -->
+    <section id="tecnologias">
+
+        <div class="section-title">
+            <small>TECNOLOGIAS</small>
+
+            <h2>
+                Soluções para o mundo digital.
+            </h2>
+
+            <p>
+                Utilizamos diferentes tecnologias para desenvolver
+                projetos modernos e eficientes.
+            </p>
+        </div>
+
+        <div class="tech-grid">
+
+            <div class="tech">
+                <h3>🌐 Desenvolvimento Web</h3>
+                <p>
+                    Criação de sites e sistemas modernos,
+                    responsivos e preparados para diferentes dispositivos.
+                </p>
+            </div>
+
+            <div class="tech">
+                <h3>📱 Aplicações</h3>
+                <p>
+                    Desenvolvimento de soluções digitais
+                    para facilitar processos e melhorar experiências.
+                </p>
+            </div>
+
+            <div class="tech">
+                <h3>☁️ Cloud & Dados</h3>
+                <p>
+                    Soluções utilizando dados e tecnologias
+                    em nuvem para aumentar eficiência.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LOCALIZAÇÃO -->
+    <section id="localizacao">
+
+        <div class="section-title">
+            <small>ONDE ESTAMOS</small>
+
+            <h2>
+                Nossa localização
+            </h2>
+
+            <p>
+                Venha conhecer a Inova Tech.
+            </p>
+        </div>
+
+        <div class="location">
+
+            <div class="location-info">
+
+                <h3>📍 Inova Tech</h3>
+
+                <p>
+                    <strong>Endereço</strong><br>
+                    São Bernardo do Campo - SP
+                </p>
+
+                <p>
+                    <strong>Atendimento</strong><br>
+                    Segunda a sexta, das 09h às 18h
+                </p>
+
+                <p>
+                    <strong>E-mail</strong><br>
+                    contato@inovatech.com
+                </p>
+
+            </div>
+
+            <div class="map">
+                <span>
+                    📍 São Bernardo do Campo - SP
+                </span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RODAPÉ -->
+    <footer>
+
+        <div>
+            © 2026 Inova Tech
+        </div>
+
+        <div>
+            Tecnologia que transforma ideias.
+        </div>
+
+    </footer>
+
+</body>
+</html>
